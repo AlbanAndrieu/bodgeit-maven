@@ -33,5 +33,11 @@
         <error-code>500</error-code>
         <location>/axis2-web/Error/error500.jsp</location>
     </error-page-->
-    
+
+	<!-- For Jetty to work -->
+	<!-- works with com.sun.faces 
+	<listener>
+		<listener-class>com.sun.faces.config.ConfigureListener</listener-class>
+	</listener>
+	-->
 </web-app>
