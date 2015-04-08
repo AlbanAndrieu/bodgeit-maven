@@ -39,6 +39,7 @@
 		<slf4j.version>1.7.5</slf4j.version>
 		<servlet.api.version>2.5</servlet.api.version>
 		<commons.lang.version>2.6</commons.lang.version>
+		<commons.lang3.version>3.0</commons.lang3.version>
 		<selenium.version>2.44.0</selenium.version>
 		<selenium.driver.version>${selenium.version}</selenium.driver.version>
 
@@ -129,6 +130,11 @@
 			<version>${commons.lang.version}</version>
 			<scope>compile</scope>
 		</dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>${commons.lang3.version}</version>
+        </dependency>
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
