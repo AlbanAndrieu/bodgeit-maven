@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.nabla.project.servers.sample</groupId>
+	<artifactId>thebodgeitstore</artifactId>
+	<version>1.4-SNAPSHOT</version>
+	<packaging>war</packaging>
+	<name>thebodgeitstore</name>
+	<url>https://github.com/AlbanAndrieu/bodgeit-maven</url>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+        <jdkLevel>1.7</jdkLevel>
+        <!--<jdkVersion>1.7.0</jdkVersion>-->
+        <junit.version>4.11</junit.version>
+		<servlet.api.version>2.5</servlet.api.version>
+		<commons.lang.version>2.6</commons.lang.version>
+		 <selenium.version>2.44.0</selenium.version>
+		<selenium.driver.version>${selenium.version}</selenium.driver.version>
+
+		<maven.zap.plugin.version>1.6-SNAPSHOT</maven.zap.plugin.version>
+		<maven.compiler.plugin.version>3.1</maven.compiler.plugin.version>
+		<maven.surefire.plugin.version>2.18.1</maven.surefire.plugin.version>
+		<maven.failsafe.plugin.version>${maven.surefire.plugin.version}</maven.failsafe.plugin.version>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>${junit.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>commons-lang</groupId>
+			<artifactId>commons-lang</artifactId>
+			<version>${commons.lang.version}</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-java</artifactId>
+			<version>${selenium.driver.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<version>${servlet.api.version}</version>
+			<scope>provided</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>${maven.compiler.plugin.version}</version>
+				<configuration>
+					<source>${jdkLevel}</source>
+					<target>${jdkLevel}</target>
+					<debug>off</debug>
+					<debuglevel>none</debuglevel>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-failsafe-plugin</artifactId>
+                <version>${maven.failsafe.plugin.version}</version>
+				<!-- <configuration> <includes> <include>**/*IntegrationTest.java</include>
+					</includes> </configuration> -->
+				<executions>
+					<execution>
+						<goals>
+							<goal>integration-test</goal>
+							<goal>verify</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.owasp.zaproxy</groupId>
+				<artifactId>zap-maven-plugin</artifactId>
+				<version>${maven.zap.plugin.version}</version>
+				<configuration>
+					<!-- Windows -->
+					<!--<zapProgram>C:\Work\Tools\ZAProxy\zap.bat</zapProgram> -->
+					<!-- Mac OS X -->
+					<!-- <zapProgram>/Users/davidtillemans/Tools/ZAP/zap.sh</zapProgram> -->
+					<!-- Linux -->
+					<zapProgram>/workspace/users/albandri30/zaproxy-read-only/build/zap/zap.sh</zapProgram>
+					<zapProxyHost>localhost</zapProxyHost>
+					<zapProxyPort>8090</zapProxyPort>
+					<targetURL>http://localhost:9090/</targetURL>
+					<saveSession>false</saveSession>
+					<shutdownZAP>false</shutdownZAP>
+					<format>json</format>
+				</configuration>
+				<executions>
+					<execution>
+						<id>startZAP</id>
+						<phase>pre-integration-test</phase>
+						<goals>
+							<goal>start-zap</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>processZAP</id>
+						<phase>post-integration-test</phase>
+						<goals>
+							<goal>process-zap</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>

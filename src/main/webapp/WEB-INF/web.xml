@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns="http://java.sun.com/xml/ns/javaee" 
+	xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" 
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+	http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" 
+	id="WebApp_ID" version="2.5">
+	
+	<display-name>The BodgeIt Store Init Servlet</display-name>
+	    
+    <servlet>
+        <servlet-name>InitServlet</servlet-name>        
+        <!-- servlet-class>org.zaproxy.bodgit.servlet.InitServlet</servlet-class-->
+        <jsp-file>/init.jsp</jsp-file>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>InitServlet</servlet-name>
+        <url-pattern>/servlet/InitServlet</url-pattern>
+    </servlet-mapping>
+
+   <welcome-file-list>
+      <welcome-file>home.jsp</welcome-file>
+      <welcome-file>home.html</welcome-file>
+    </welcome-file-list>
+
+    <!-- error-page>
+      <error-code>404</error-code>
+      <location>/axis2-web/Error/error404.jsp</location>
+    </error-page-->
+
+    <!-- error-page>
+        <error-code>500</error-code>
+        <location>/axis2-web/Error/error500.jsp</location>
+    </error-page-->
+    
+</web-app>
