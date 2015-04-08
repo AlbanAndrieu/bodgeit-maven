@@ -510,7 +510,7 @@
 							</execution>
 							<execution>
 								<id>processZAP</id>
-								<phase>post-integration-test</phase>
+								<phase>integration-test</phase>
 								<goals>
 									<goal>process-zap</goal>
 								</goals>
