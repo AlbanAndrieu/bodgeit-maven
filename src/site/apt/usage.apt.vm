@@ -1,0 +1,104 @@
+------
+Using the plugin
+------
+David Tillemans
+------
+ 2013-11-22
+
+An example to use the plugin can be found in the bodgeit maven version. (See http://code.google.com/p/bodgeit-maven/). The plugin is run in the integration test phases of maven. This must also be configured in this way.
+
+Example maven config (from the bodgeit example) for you web application.
++--------------------------------------------------------------------------------------------------------+
+      <plugin>
+        <groupId>org.zaproxy.zapmavenplugin</groupId>
+        <artifactId>zap-maven-plugin</artifactId>
+        <version>1.0-SNAPSHOT</version>
+        <configuration>
+          <!-- Windows -->
+          <!-- <zapProgram>C:\Program Files\OWASP\Zed Attack Proxy\zap.bat</zapProgram> -->
+          <!-- Mac OS X -->
+<!--          <zapProgram>/Users/cryptable/Tools/ZAP/zap.sh</zapProgram> -->
+          <!-- Linux -->
+          <zapProgram>/home/cryptable/Work/tools/ZAP2/zap.sh</zapProgram>
+          <zapProxyHost>localhost</zapProxyHost>
+          <zapProxyPort>8080</zapProxyPort>
+          <targetURL>http://localhost:8090/</targetURL>
+          <saveSession>false</saveSession>
+        </configuration>
+        <executions>
+          <execution>
+          	<id>startZAP</id>
+            <phase>pre-integration-test</phase>
+            <goals>
+              <goal>start-zap</goal>
+            </goals>
+          </execution>
+          <execution>
+          	<id>processZAP</id>
+            <phase>post-integration-test</phase>
+            <goals>
+              <goal>process-zap</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
++--------------------------------------------------------------------------------------------------------+
+
+You have to configure to execution phases. In the pre-integration-phase the process 'start-zap' must be called and in the post-integration-phase the process 'process-zap' must be called. 
++---------------------------------+
+start-zap will start your zaproxy.
++---------------------------------+
+process-zap will get all alerts (the reason to add the patch from zap-maven-plugin) and store them in the target directory under a zap-report directory.
+
+** <<\<zapProgram\>>>-tag **
+Location of the your zaproxy configuration
+
+** <<\<zapProxyHost\>>>-tag **
+The hostname or ip-address of the zap-proxy.
+
+** <<\<zapProxyPort\>>>-tag **
+The port where your ZAProxy is listening to.
+
+** <<\<targetURL\>>>-tag **
+URL to scan the application
+
+** <<\<spiderURL\>>>-tag **
+Spider the targetURL? 'true' or 'false', default is 'true'
+
+** <<\<scanURL\>>>-tag **
+Perform Active scan of the targetURL? 'true' or 'false', default is 'true'. No reason, realy to put it 'false'.
+
+** <<\<saveSession\>>>-tag **
+Save your session for later reuse and investigation. Default 'true'. It is sometimes interesting to put it to 'false', to minimize to place on your harddisk.
+
+** <<\<shutdownZAP\>>>-tag **
+This is close your ZAProxy application. Default it is set to 'true'.
+
+** <<\<reportAlerts\>>>-tag **
+Create a report (from the getAllAlerts client call) as an XML file. Default it is 'true'. 
+
+** <<\<reportsDirectory\>>>-tag **
+The directory to store the reports. Default it is set to '<your project directory>/target/zap-reports
+The filename is composed as ZAP`<yyyyMMddHHmmss>_<UUID>`.xml for the report file and ZAP`<yyyyMMddHHmmss>_<UUID>`.session (if you store the session-file).
+
+** <<\<format\>>>-tag **
+The format of the report. Supported formats: json, xml and html
+Default is `xml`.
+
+** local.properties file **
+This local.properties-file of your application must be configured with the proxy settings of your zap-proxy using the zap.proxy configuration.
+
+Example of local.properties:
++--------------------------------------------------------------------------------------------+
+# This file contains all of the environment specific configuration, change it for your setup
+
+# Directory to deploy to
+# /opt/tomcat/webapps
+deploy.dir=C:\\Work\\Test\\tomcat-7.0\\webapps
+
+# The application being tested
+zap.target=http://localhost:8090/
+zap.targetApp=http://localhost:8090/bodgeit/
+
+zap.proxy=localhost:8080
++--------------------------------------------------------------------------------------------+
