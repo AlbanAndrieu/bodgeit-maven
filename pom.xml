@@ -342,10 +342,6 @@
 						</deployable>
 					</deployables>
 				</configuration>
-				<!-- <executions> <execution> <id>pre-integration-test</id> <phase>pre-integration-test</phase>
-					<goals> <goal>deploy</goal> </goals> </execution> <execution> <id>post-integration-test</id>
-					<phase>post-integration-test</phase> <goals> <goal>undeploy</goal> </goals>
-					</execution> </executions> -->
 			</plugin>
 
 			<plugin>

@@ -1,4 +1,11 @@
-# bodgeit-maven
+bodgeit-maven
+================
+
+[![Jenkins Build Status](http://home.nabla.mobi:8380/jenkins/job/bodgeit-maven-nightly/badge/icon)](http://home.nabla.mobi:8380/jenkins/job/bodgeit-maven-nightly)
+
+Dependency Status using [versioneye](https://www.versioneye.com/users/AlbanAndrieu)
+
+[![Dependency Status](https://www.versioneye.com/user/projects/55279e252ced4ffffe0006a1/badge.svg?style=flat)](https://www.versioneye.com/user/projects/55279e252ced4ffffe0006a1/visual)
 
 This is mavenised version of the bodgeitstore. (see https://github.com/psiinon/bodgeit for original code with Ant).
 Goal is to test integration with https://github.com/javabeanz/zap-maven-plugin
