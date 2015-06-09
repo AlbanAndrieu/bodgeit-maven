@@ -497,8 +497,8 @@
 							<apiKey>7c3sdphhcg24l7hnjj0dgeg3as</apiKey>
 							<targetURL>http://localhost:9090/bodgeit/</targetURL>
 							<saveSession>false</saveSession>
-							<shutdownZAP>false</shutdownZAP>
-							<!--<shutdownZAP>true</shutdownZAP>-->
+							<!--<shutdownZAP>false</shutdownZAP>-->
+							<shutdownZAP>true</shutdownZAP>
 							<!--<format>json</format>-->
 							<format>html</format>
 							<!--<format>xml</format>-->
