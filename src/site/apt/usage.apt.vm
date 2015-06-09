@@ -44,11 +44,13 @@ Example maven config (from the bodgeit example) for you web application.
       </plugin>
 +--------------------------------------------------------------------------------------------------------+
 
-You have to configure to execution phases. In the pre-integration-phase the process 'start-zap' must be called and in the post-integration-phase the process 'process-zap' must be called. 
+You have to configure to execution phases. In the pre-integration-phase the process 'start-zap' must be called and in the post-integration-phase the process 'process-zap' must be called.
 +---------------------------------+
 start-zap will start your zaproxy.
 +---------------------------------+
 process-zap will get all alerts (the reason to add the patch from zap-maven-plugin) and store them in the target directory under a zap-report directory.
+
+* <<\<zapProxy\>>> *
 
 ** <<\<zapProgram\>>>-tag **
 Location of the your zaproxy configuration
@@ -75,7 +77,7 @@ Save your session for later reuse and investigation. Default 'true'. It is somet
 This is close your ZAProxy application. Default it is set to 'true'.
 
 ** <<\<reportAlerts\>>>-tag **
-Create a report (from the getAllAlerts client call) as an XML file. Default it is 'true'. 
+Create a report (from the getAllAlerts client call) as an XML file. Default it is 'true'.
 
 ** <<\<reportsDirectory\>>>-tag **
 The directory to store the reports. Default it is set to '<your project directory>/target/zap-reports
