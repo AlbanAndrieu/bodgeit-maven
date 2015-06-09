@@ -59,7 +59,8 @@
 		<cargo.wait>false</cargo.wait>
 		<cargo.remote.user>admin</cargo.remote.user>
 		<cargo.remote.password>microsoft</cargo.remote.password>
-		<cargo.rmi.port>1099</cargo.rmi.port> <!-- jenkins cargo 8079,8179,8279 -->
+		<cargo.jmx.rmi.port>1099</cargo.jmx.rmi.port>
+		<cargo.rmi.port>8079</cargo.rmi.port> <!-- jenkins cargo 8079,8179,8279 -->
 		<cargo.ajp.port>9010</cargo.ajp.port>
 		<cargo.tomcat.ajp.port>${cargo.ajp.port}</cargo.tomcat.ajp.port>
 		<!--<cargo.jboss.ajp.port>${cargo.ajp.port}</cargo.jboss.ajp.port> -->
@@ -69,14 +70,14 @@
 		<cargo.jetty.jmx.activation>-Dcom.sun.management.jmxremote
 			-Dcom.sun.management.jmxremote.ssl=false
 			-Dcom.sun.management.jmxremote.authenticate=false
-			-Dcom.sun.management.jmxremote.port=${cargo.rmi.port}
+			-Dcom.sun.management.jmxremote.port=${cargo.jmx.rmi.port}
 			-Djetty.jmxrmihost=localhost
-			-Djetty.jmxrmiport=${cargo.rmi.port}
+			-Djetty.jmxrmiport=${cargo.jmx.rmi.port}
 		</cargo.jetty.jmx.activation>
 		<cargo.tomcat.jmx.activation>-Dcom.sun.management.jmxremote
 			-Dcom.sun.management.jmxremote.ssl=false
 			-Dcom.sun.management.jmxremote.authenticate=false
-			-Dcom.sun.management.jmxremote.port=${cargo.rmi.port}
+			-Dcom.sun.management.jmxremote.port=${cargo.jmx.rmi.port}
 		</cargo.tomcat.jmx.activation>
 		<!-- if you want a remote debugging on a different a address override on
 			command line with -Dcargo.debug.addres=xxxx -->
@@ -484,7 +485,7 @@
 							<!-- Mac OS X -->
 							<!-- <zapProgram>/Users/davidtillemans/Tools/ZAP/zap.sh</zapProgram> -->
 							<!-- Linux -->
-							<zapProgram>/workspace/users/albandri30/zaproxy-read-only/build/zap/zap.sh</zapProgram>
+							<zapProgram>/workspace/divers/zaproxy-read-only/build/zap/zap.sh</zapProgram>
 							<zapProxyHost>localhost</zapProxyHost>
 							<zapProxyPort>8090</zapProxyPort>
 							<apiKey>7c3sdphhcg24l7hnjj0dgeg3as</apiKey>
