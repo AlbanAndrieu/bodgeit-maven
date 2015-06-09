@@ -97,6 +97,7 @@
 		<maven.jetty.eclipse.plugin.version>${jetty.version}</maven.jetty.eclipse.plugin.version>
 		<maven.dependency.plugin.version>2.9</maven.dependency.plugin.version>
 		<maven.tomcat7.plugin.version>2.2</maven.tomcat7.plugin.version>
+		<maven.site.plugin.version>3.4</maven.site.plugin.version>
 	</properties>
 
 	<dependencies>
@@ -240,6 +241,11 @@
 		<finalName>bodgeit</finalName>
 
 		<plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-site-plugin</artifactId>
+                <version>${maven.site.plugin.version}</version>
+            </plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
