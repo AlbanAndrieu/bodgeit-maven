@@ -40,7 +40,7 @@
 		<servlet.api.version>2.5</servlet.api.version>
 		<commons.lang.version>2.6</commons.lang.version>
 		<commons.lang3.version>3.0</commons.lang3.version>
-		<selenium.version>2.44.0</selenium.version>
+		<selenium.version>2.46.0</selenium.version>
 		<selenium.driver.version>${selenium.version}</selenium.driver.version>
 
 		<!--<jboss.port>8180</jboss.port> --> <!-- jenkins cargo 8182,8183 -->
