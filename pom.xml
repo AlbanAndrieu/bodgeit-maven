@@ -88,6 +88,8 @@
 		<webdriver.base.url>http://${cargo.host}:${cargo.port}</webdriver.base.url> <!-- default url used by selenium butcan be ovverrided doing mvn clean verify
 			-Psample -Dserver=jetty9x -Ddatabase=derby -Dwebdriver.base.url=http://localhost:9090 -->
 		<javaagent />
+		<zap.host>localhost</zap.host>
+		<zap.proxy>8091</zap.proxy>
 
 		<maven.zap.plugin.version>1.6-SNAPSHOT</maven.zap.plugin.version>
 		<maven.compiler.plugin.version>3.1</maven.compiler.plugin.version>
@@ -492,13 +494,13 @@
 							<!-- <zapProgram>/Users/davidtillemans/Tools/ZAP/zap.sh</zapProgram> -->
 							<!-- Linux -->
 							<zapProgram>/workspace/divers/zaproxy-read-only/build/zap/zap.sh</zapProgram>
-							<zapProxyHost>localhost</zapProxyHost>
-							<zapProxyPort>8090</zapProxyPort>
+							<zapProxyHost>${zap.host}</zapProxyHost>
+							<zapProxyPort>${zap.proxy}</zapProxyPort>
 							<apiKey>7c3sdphhcg24l7hnjj0dgeg3as</apiKey>
 							<targetURL>http://localhost:9090/bodgeit/</targetURL>
 							<saveSession>false</saveSession>
-							<!--<shutdownZAP>false</shutdownZAP>-->
-							<shutdownZAP>true</shutdownZAP>
+							<shutdownZAP>false</shutdownZAP>
+							<!--<shutdownZAP>true</shutdownZAP>-->
 							<!--<format>json</format>-->
 							<format>html</format>
 							<!--<format>xml</format>-->

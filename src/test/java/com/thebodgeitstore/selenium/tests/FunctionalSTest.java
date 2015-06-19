@@ -70,6 +70,8 @@ public class FunctionalSTest
     private static DefaultSelenium        SELENIUM;
     private static DesiredCapabilities    CAPABILITIES;
 
+    private static long                   DEPLOY_WAIT          = 20;
+
     @BeforeClass
     public static void setUp() throws Exception
     {
@@ -146,7 +148,8 @@ public class FunctionalSTest
 
         SELENIUM = new WebDriverBackedSelenium(DRIVER, BASE_URL);
 
-        Thread.sleep(10000); // 10 s
+        FunctionalSTest.LOGGER.info("Wainting for deploy to be finished before starting test (in seconds) : {}", DEPLOY_WAIT);
+        TimeUnit.SECONDS.sleep(DEPLOY_WAIT);
     }
 
     private void sleep()
