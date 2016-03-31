@@ -130,7 +130,7 @@
 		<maven.dependency.plugin.version>2.9</maven.dependency.plugin.version>
 		<maven.tomcat7.plugin.version>2.2</maven.tomcat7.plugin.version>
 		<maven.site.plugin.version>3.4</maven.site.plugin.version>
-		<maven.sonar.plugin.version>2.7.1</maven.sonar.plugin.version>
+		<maven.sonar.plugin.version>5.1</maven.sonar.plugin.version>
 	</properties>
 
 	<dependencies>
