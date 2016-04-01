@@ -118,7 +118,7 @@
 		<sonar.jdbc.username>sonar</sonar.jdbc.username>
 		<sonar.jdbc.password>microsoft</sonar.jdbc.password>
 		<sonar.host.url>http://home.nabla.mobi:9000</sonar.host.url>
-		<sonar.build-stability.url>Jenkins:$BUILD_URL</sonar.build-stability.url>
+		<sonar.build-stability.url>Jenkins:$BUILD_URL/..</sonar.build-stability.url>
 		<sonar.github.oauth>06895b871e3f2775b7497e809222be22770d0c05</sonar.github.oauth>
 
 		<maven.zap.plugin.version>1.6-SNAPSHOT</maven.zap.plugin.version>
@@ -130,7 +130,7 @@
 		<maven.dependency.plugin.version>2.9</maven.dependency.plugin.version>
 		<maven.tomcat7.plugin.version>2.2</maven.tomcat7.plugin.version>
 		<maven.site.plugin.version>3.4</maven.site.plugin.version>
-		<maven.sonar.plugin.version>5.1</maven.sonar.plugin.version>
+		<maven.sonar.plugin.version>3.0.1</maven.sonar.plugin.version>
 	</properties>
 
 	<dependencies>
