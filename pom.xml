@@ -113,7 +113,7 @@
 		-->
 
 		<!--<sonar.jdbc.url>jdbc:mysql://home.nabla.mobi:3306/sonar</sonar.jdbc.url>-->
-		<sonar.jdbc.url>jdbc:h2:tcp://home.nabla.mobi:9092/sonar</sonar.jdbc.url>
+		<sonar.jdbc.url>jdbc:h2:tcp://192.168.0.29:9092/sonar</sonar.jdbc.url>
 		<!--<sonar.jdbc.driver>com.mysql.jdbc.Driver</sonar.jdbc.driver>-->
 		<sonar.jdbc.driver>org.h2.Driver</sonar.jdbc.driver>
 		<sonar.jdbc.username>sonar</sonar.jdbc.username>
