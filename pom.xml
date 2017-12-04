@@ -12,7 +12,23 @@
 	<packaging>war</packaging>
 	<name>thebodgeitstore</name>
 	<url>https://github.com/AlbanAndrieu/bodgeit-maven</url>
-
+	<prerequisites>
+		<maven>3.0.4</maven>
+	</prerequisites>
+	<scm>
+		<connection>scm:git:ssh://git@github.com/AlbanAndrieu/bodgeit-maven.git</connection>
+		<developerConnection>scm:git:ssh://git@github.com/AlbanAndrieu/bodgeit-maven.git</developerConnection>
+		<url>https://github.com/AlbanAndrieu/bodgeit-maven</url>
+	</scm>
+		<issueManagement>
+		<system>GitHub Issues</system>
+		<url>https://github.com/AlbanAndrieu/bodgeit-maven/issues</url>
+	</issueManagement>
+	<ciManagement>
+		<system>Jenkins</system>
+		<url>${JOB_URL}</url>
+	</ciManagement>
+	
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
