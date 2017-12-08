@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-
-	<!-- <parent> <groupId>com.nabla.project.servers.sample</groupId> <artifactId>sample</artifactId>
-		<version>1.0.1-SNAPSHOT</version> </parent> -->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
 	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<artifactId>sample</artifactId>
+		<groupId>com.nabla.project.servers.sample</groupId>
+		<version>1.0.1-SNAPSHOT</version>
+	</parent>
 	<groupId>com.nabla.project.servers.sample</groupId>
 	<artifactId>thebodgeitstore</artifactId>
 	<version>1.4-SNAPSHOT</version>
@@ -20,7 +22,7 @@
 		<developerConnection>scm:git:ssh://git@github.com/AlbanAndrieu/bodgeit-maven.git</developerConnection>
 		<url>https://github.com/AlbanAndrieu/bodgeit-maven</url>
 	</scm>
-		<issueManagement>
+	<issueManagement>
 		<system>GitHub Issues</system>
 		<url>https://github.com/AlbanAndrieu/bodgeit-maven/issues</url>
 	</issueManagement>
@@ -28,58 +30,20 @@
 		<system>Jenkins</system>
 		<url>${JOB_URL}</url>
 	</ciManagement>
-	
+
 	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-
-		<jdkLevel>1.7</jdkLevel>
-		<!--<jdkVersion>1.7.0</jdkVersion> -->
-
-		<maven.test.skip>false</maven.test.skip>
-		<maven.test.failure.skip>true</maven.test.failure.skip>
-		<maven.test.it.skip>${maven.test.skip}</maven.test.it.skip>
-		<maven.test.ut.skip>${maven.test.skip}</maven.test.ut.skip>
-		<webdriver.chrome.driver>/var/lib/chromedriver</webdriver.chrome.driver>
-		<webdriver.firefox.bin>/usr/lib/firefox/firefox</webdriver.firefox.bin>
-
-		<jdbc.org.hsqldb.version>2.3.1</jdbc.org.hsqldb.version>
-		<jdbc.client.artifactId>hsqldb</jdbc.client.artifactId>
-
-		<jdbc.groupId>org.hsqldb</jdbc.groupId>
-		<jdbc.artifactId>${jdbc.client.artifactId}</jdbc.artifactId>
-		<jdbc.version>${jdbc.org.hsqldb.version}</jdbc.version>
-
-		<junit.version>4.11</junit.version>
-		<log4j.version>1.2.17</log4j.version>
-		<slf4j.version>1.7.5</slf4j.version>
-		<servlet.api.version>2.5</servlet.api.version>
-		<commons.lang.version>2.6</commons.lang.version>
-		<commons.lang3.version>3.0</commons.lang3.version>
-		<!--<selenium.version>2.46.0</selenium.version>-->
-		<selenium.version>3.0.1</selenium.version>
-		<selenium.driver.version>${selenium.version}</selenium.driver.version>
-
-		<!--<jboss.port>8180</jboss.port> --> <!-- jenkins cargo 8182,8183 -->
-		<tomcat.port>8280</tomcat.port> <!-- jenkins cargo 8281,8282 -->
-		<jetty.port>9090</jetty.port> <!-- jenkins cargo 9090,9091 -->
-		<jetty.stop.port>19097</jetty.stop.port>
-
-		<jetty9.version>9.2.2.v20140723</jetty9.version>
-		<jetty.version>${jetty9.version}</jetty.version>
-		<jetty8.version>8.1.15.v20140411</jetty8.version> <!-- version of jetty used by cxf 2.7.14 -->
-		<jetty.runner.version>${jetty8.version}</jetty.runner.version>
+		<!-- jenkins cargo 8079,8179,8279 -->
+		<cargo.ajp.port>9010</cargo.ajp.port>
+		<!-- if you want a remote debugging on a different a address override on
+			command line with -Dcargo.debug.addres=xxxx -->
+		<cargo.debug.address>8000</cargo.debug.address>
+		<!-- if you want to start remote debugging session suspended override on
+			command line with -Dcargo.debug.suspend=y -->
+		<cargo.debug.suspend>y</cargo.debug.suspend>
 
 		<!-- cargo.port must be used by jenkins to overriden using a pool of tcp
 			port -->
 		<cargo.host>localhost</cargo.host>
-		<cargo.wait>false</cargo.wait>
-		<cargo.remote.user>admin</cargo.remote.user>
-		<cargo.remote.password>microsoft</cargo.remote.password>
-		<cargo.jmx.rmi.port>1099</cargo.jmx.rmi.port>
-		<cargo.rmi.port>8079</cargo.rmi.port> <!-- jenkins cargo 8079,8179,8279 -->
-		<cargo.ajp.port>9010</cargo.ajp.port>
-		<cargo.tomcat.ajp.port>${cargo.ajp.port}</cargo.tomcat.ajp.port>
 		<!--<cargo.jboss.ajp.port>${cargo.ajp.port}</cargo.jboss.ajp.port> -->
 		<!--<cargo.jboss.management.native.port>9995</cargo.jboss.management.native.port> -->
 		<!--<cargo.jboss.management.http.port>9996</cargo.jboss.management.http.port> -->
@@ -89,42 +53,81 @@
 			-Dcom.sun.management.jmxremote.authenticate=false
 			-Dcom.sun.management.jmxremote.port=${cargo.jmx.rmi.port}
 			-Djetty.jmxrmihost=localhost
-			-Djetty.jmxrmiport=${cargo.jmx.rmi.port}
-		</cargo.jetty.jmx.activation>
+			-Djetty.jmxrmiport=${cargo.jmx.rmi.port}</cargo.jetty.jmx.activation>
+		<cargo.jmx.rmi.port>1099</cargo.jmx.rmi.port>
+		<cargo.remote.password>microsoft</cargo.remote.password>
+		<cargo.remote.user>admin</cargo.remote.user>
+		<cargo.rmi.port>8079</cargo.rmi.port>
+		<cargo.tomcat.ajp.port>${cargo.ajp.port}</cargo.tomcat.ajp.port>
 		<cargo.tomcat.jmx.activation>-Dcom.sun.management.jmxremote
 			-Dcom.sun.management.jmxremote.ssl=false
 			-Dcom.sun.management.jmxremote.authenticate=false
-			-Dcom.sun.management.jmxremote.port=${cargo.jmx.rmi.port}
-		</cargo.tomcat.jmx.activation>
-		<!-- if you want a remote debugging on a different a address override on
-			command line with -Dcargo.debug.addres=xxxx -->
-		<cargo.debug.address>8000</cargo.debug.address>
-		<!-- if you want to start remote debugging session suspended override on
-			command line with -Dcargo.debug.suspend=y -->
-		<cargo.debug.suspend>y</cargo.debug.suspend>
-		<webdriver.base.url>http://${cargo.host}:${cargo.port}</webdriver.base.url> <!-- default url used by selenium butcan be ovverrided doing mvn clean verify
+			-Dcom.sun.management.jmxremote.port=${cargo.jmx.rmi.port}</cargo.tomcat.jmx.activation>
+		<cargo.wait>false</cargo.wait>
+		<cobertura.format>xml</cobertura.format>
+		<commons.lang.version>2.6</commons.lang.version>
+		<commons.lang3.version>3.0</commons.lang3.version>
+		<!-- default url used by selenium butcan be ovverrided doing mvn clean verify
 			-Psample -Dserver=jetty9x -Ddatabase=derby -Dwebdriver.base.url=http://localhost:9090 -->
-		<javaagent />
-		<zap.host>localhost</zap.host>
-		<zap.proxy>8091</zap.proxy>
+		<javaagent></javaagent>
+		<jdbc.artifactId>${jdbc.client.artifactId}</jdbc.artifactId>
+		<jdbc.client.artifactId>hsqldb</jdbc.client.artifactId>
+
+		<jdbc.groupId>org.hsqldb</jdbc.groupId>
+
+		<jdbc.org.hsqldb.version>2.3.1</jdbc.org.hsqldb.version>
+		<jdbc.version>${jdbc.org.hsqldb.version}</jdbc.version>
+
+		<jdkLevel>1.7</jdkLevel>
+		<!-- jenkins cargo 8281,8282 -->
+		<jetty.port>9090</jetty.port>
+		<!-- version of jetty used by cxf 2.7.14 -->
+		<jetty.runner.version>${jetty8.version}</jetty.runner.version>
+		<!-- jenkins cargo 9090,9091 -->
+		<jetty.stop.port>19097</jetty.stop.port>
+		<jetty.version>${jetty9.version}</jetty.version>
+		<jetty8.version>8.1.15.v20140411</jetty8.version>
+
+		<jetty9.version>9.2.2.v20140723</jetty9.version>
+
+		<junit.version>4.11</junit.version>
+		<log4j.version>1.2.17</log4j.version>
+		<maven.cargo.maven2.plugin.version>1.4.13</maven.cargo.maven2.plugin.version>
+		<maven.compiler.plugin.version>3.1</maven.compiler.plugin.version>
+		<maven.dependency.plugin.version>2.9</maven.dependency.plugin.version>
+		<maven.failsafe.plugin.version>${maven.surefire.plugin.version}</maven.failsafe.plugin.version>
+		<maven.jetty.eclipse.plugin.version>${jetty.version}</maven.jetty.eclipse.plugin.version>
+		<maven.site.plugin.version>3.6</maven.site.plugin.version>
+		<maven.sonar.plugin.version>3.3.0.603</maven.sonar.plugin.version>
+		<maven.surefire.plugin.version>2.18.1</maven.surefire.plugin.version>
+		<maven.test.failure.skip>true</maven.test.failure.skip>
+		<maven.test.it.skip>${maven.test.skip}</maven.test.it.skip>
+		<!--<jdkVersion>1.7.0</jdkVersion> -->
+
+		<maven.test.skip>false</maven.test.skip>
+		<maven.test.ut.skip>${maven.test.skip}</maven.test.ut.skip>
+		<maven.tomcat7.plugin.version>2.2</maven.tomcat7.plugin.version>
+
+		<maven.zap.plugin.version>1.6-SNAPSHOT</maven.zap.plugin.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<selenium.driver.version>${selenium.version}</selenium.driver.version>
+		<!--<selenium.version>2.46.0</selenium.version>-->
+		<selenium.version>3.0.1</selenium.version>
+		<servlet.api.version>2.5</servlet.api.version>
+		<slf4j.version>1.7.5</slf4j.version>
 
 		<sonar.branch>master</sonar.branch>
-		<sonar.pitest.mode>reuseReport</sonar.pitest.mode>
-		<sonar.pitest.reportsDirectory>target/pit-reports</sonar.pitest.reportsDirectory>
-		<sonar.groovy.codenarc.reportPath>target/CodeNarcReport.xml</sonar.groovy.codenarc.reportPath>
-		<!--<sonar.javascript.lcov.reportPath>${basedir}/target/lcov*.info</sonar.javascript.lcov.reportPath>-->
-		<!--<sonar.javascript.lcov.reportPath>${basedir}/target/lcov.info</sonar.javascript.lcov.reportPath>-->
-		<sonar.javascript.forceZeroCoverage>true</sonar.javascript.forceZeroCoverage>
-		<sonar.javascript.lcov.reportPath>${basedir}/target/lcov-karma.info</sonar.javascript.lcov.reportPath>
-		<sonar.javascript.lcov.itReportPath>${basedir}/target/lcov.info</sonar.javascript.lcov.itReportPath>
-		<sonar.dependencyCheck.reportPath>${basedir}/target/dependency-check-report.xml</sonar.dependencyCheck.reportPath>
-		<sonar.github.oauth>06895b871e3f2775b7497e809222be22770d0c05</sonar.github.oauth>
-		<sonar.global.exclusions>**/generated/**</sonar.global.exclusions>
+
+		<sonar.build-stability.url>Jenkins:$BUILD_URL/..</sonar.build-stability.url>
 
 		<!--<sonar.groovy.cobertura.reportPath>target/site/cobertura/coverage.xml</sonar.groovy.cobertura.reportPath>-->
 		<sonar.cobertura.reportPath>target/site/cobertura/coverage.xml</sonar.cobertura.reportPath>
-		<cobertura.format>xml</cobertura.format>
-		<sonar.java.target>1.8</sonar.java.target>
+		<sonar.dependencyCheck.reportPath>${basedir}/target/dependency-check-report.xml</sonar.dependencyCheck.reportPath>
+		<sonar.github.oauth>06895b871e3f2775b7497e809222be22770d0c05</sonar.github.oauth>
+		<sonar.github.oauth>06895b871e3f2775b7497e809222be22770d0c05</sonar.github.oauth>
+		<sonar.global.exclusions>**/generated/**</sonar.global.exclusions>
+		<sonar.groovy.codenarc.reportPath>target/CodeNarcReport.xml</sonar.groovy.codenarc.reportPath>
 		<!--<sonar.language>java</sonar.language>-->
 		<!--
 		<jetty.context.path.to.replace>jetty.context.path</jetty.context.path.to.replace>
@@ -141,24 +144,27 @@
 		<sonar.host.url>http://home.nabla.mobi:9000</sonar.host.url>
 		-->
 		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
+		<sonar.java.target>1.8</sonar.java.target>
+		<!--<sonar.javascript.lcov.reportPath>${basedir}/target/lcov*.info</sonar.javascript.lcov.reportPath>-->
+		<!--<sonar.javascript.lcov.reportPath>${basedir}/target/lcov.info</sonar.javascript.lcov.reportPath>-->
+		<sonar.javascript.forceZeroCoverage>true</sonar.javascript.forceZeroCoverage>
+		<sonar.javascript.lcov.itReportPath>${basedir}/target/lcov.info</sonar.javascript.lcov.itReportPath>
+		<sonar.javascript.lcov.reportPath>${basedir}/target/lcov-karma.info</sonar.javascript.lcov.reportPath>
 		<sonar.links.ci>${env.BUILD_URL}</sonar.links.ci>
 		<sonar.links.scm>https://github.com/AlbanAndrieu</sonar.links.scm>
 		<sonar.login>50cb615252d00e68f3678b321335a8d1f13a9145</sonar.login>
 		<sonar.organization>albanandrieu-github</sonar.organization>
-		
-		<sonar.build-stability.url>Jenkins:$BUILD_URL/..</sonar.build-stability.url>
-		<sonar.github.oauth>06895b871e3f2775b7497e809222be22770d0c05</sonar.github.oauth>
+		<sonar.pitest.mode>reuseReport</sonar.pitest.mode>
+		<sonar.pitest.reportsDirectory>target/pit-reports</sonar.pitest.reportsDirectory>
 
-		<maven.zap.plugin.version>1.6-SNAPSHOT</maven.zap.plugin.version>
-		<maven.compiler.plugin.version>3.1</maven.compiler.plugin.version>
-		<maven.surefire.plugin.version>2.18.1</maven.surefire.plugin.version>
-		<maven.failsafe.plugin.version>${maven.surefire.plugin.version}</maven.failsafe.plugin.version>
-		<maven.cargo.maven2.plugin.version>1.4.13</maven.cargo.maven2.plugin.version>
-		<maven.jetty.eclipse.plugin.version>${jetty.version}</maven.jetty.eclipse.plugin.version>
-		<maven.dependency.plugin.version>2.9</maven.dependency.plugin.version>
-		<maven.tomcat7.plugin.version>2.2</maven.tomcat7.plugin.version>
-		<maven.site.plugin.version>3.4</maven.site.plugin.version>
-		<maven.sonar.plugin.version>3.2</maven.sonar.plugin.version>
+		<!--<jboss.port>8180</jboss.port> -->
+		<!-- jenkins cargo 8182,8183 -->
+		<tomcat.port>8280</tomcat.port>
+		<webdriver.base.url>http://${cargo.host}:${cargo.port}</webdriver.base.url>
+		<webdriver.chrome.driver>/var/lib/chromedriver</webdriver.chrome.driver>
+		<webdriver.firefox.bin>/usr/lib/firefox/firefox</webdriver.firefox.bin>
+		<zap.host>localhost</zap.host>
+		<zap.proxy>8091</zap.proxy>
 	</properties>
 
 	<dependencies>
@@ -171,13 +177,6 @@
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
 			<version>${slf4j.version}</version>
-		</dependency>
-		<!-- Log4J Adapter for SLF4J -->
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-log4j12</artifactId>
-			<version>${slf4j.version}</version>
-			<scope>runtime</scope>
 		</dependency>
 		<!--
 		<dependency>
@@ -193,11 +192,43 @@
 			<version>${commons.lang.version}</version>
 			<scope>compile</scope>
 		</dependency>
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-lang3</artifactId>
-            <version>${commons.lang3.version}</version>
-        </dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>${commons.lang3.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>${jdbc.groupId}</groupId>
+			<artifactId>${jdbc.client.artifactId}</artifactId>
+			<version>${jdbc.version}</version>
+			<!--<scope>provided</scope> -->
+		</dependency>
+		<!--
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-htmlunit-driver</artifactId>
+			<version>${selenium.driver.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-server</artifactId>
+			<scope>test</scope>
+		</dependency>
+		-->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<version>${servlet.api.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<!-- Log4J Adapter for SLF4J -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>${slf4j.version}</version>
+			<scope>runtime</scope>
+		</dependency>
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
@@ -271,47 +302,29 @@
 			<version>${selenium.driver.version}</version>
 			<scope>test</scope>
 		</dependency>
-		<!--
-		<dependency>
-			<groupId>org.seleniumhq.selenium</groupId>
-			<artifactId>selenium-htmlunit-driver</artifactId>
-			<version>${selenium.driver.version}</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.seleniumhq.selenium</groupId>
-			<artifactId>selenium-server</artifactId>
-			<scope>test</scope>
-		</dependency>
-		-->
-		<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>servlet-api</artifactId>
-			<version>${servlet.api.version}</version>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>${jdbc.groupId}</groupId>
-			<artifactId>${jdbc.client.artifactId}</artifactId>
-			<version>${jdbc.version}</version>
-			<!--<scope>provided</scope> -->
-		</dependency>
 	</dependencies>
 
 	<build>
 		<finalName>bodgeit</finalName>
 
 		<plugins>
+			<!-- deprecated
 			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
+			  <groupId>org.codehaus.mojo</groupId>
+			  <artifactId>sonar-maven-plugin</artifactId>
+			  <version>${maven.sonar.plugin.version}</version>
+			</plugin>
+			-->
+			<plugin>
+				<groupId>org.sonarsource.scanner.maven</groupId>
 				<artifactId>sonar-maven-plugin</artifactId>
 				<version>${maven.sonar.plugin.version}</version>
 			</plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-site-plugin</artifactId>
-                <version>${maven.site.plugin.version}</version>
-            </plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-site-plugin</artifactId>
+				<version>${maven.site.plugin.version}</version>
+			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
@@ -346,16 +359,6 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-failsafe-plugin</artifactId>
 				<version>${maven.failsafe.plugin.version}</version>
-				<configuration>
-					<!--<argLine>${failsafe.argLine}</argLine> -->
-					<skipTests>${maven.test.skip}</skipTests>
-					<skipITs>${maven.test.it.skip}</skipITs>
-					<parallel>classes</parallel>
-					<threadCount>1</threadCount>
-					<forkCount>1</forkCount>
-					<reuseForks>false</reuseForks>
-					<reportsDirectory>${project.build.directory}/surefire-reports</reportsDirectory>
-				</configuration>
 				<executions>
 					<execution>
 						<id>integration-test</id>
@@ -372,6 +375,16 @@
 						</goals>
 					</execution>
 				</executions>
+				<configuration>
+					<!--<argLine>${failsafe.argLine}</argLine> -->
+					<skipTests>${maven.test.skip}</skipTests>
+					<skipITs>${maven.test.it.skip}</skipITs>
+					<parallel>classes</parallel>
+					<threadCount>1</threadCount>
+					<forkCount>1</forkCount>
+					<reuseForks>false</reuseForks>
+					<reportsDirectory>${project.build.directory}/surefire-reports</reportsDirectory>
+				</configuration>
 			</plugin>
 
 			<!-- for automatic running of integration tests with Jetty -->
@@ -382,7 +395,8 @@
 				<configuration>
 					<wait>${cargo.wait}</wait>
 					<container>
-						<timeout>180000</timeout> <!-- 5 minutes -->
+						<timeout>180000</timeout>
+						<!-- 5 minutes -->
 						<!--<containerId>${cargo.container}</containerId> -->
 						<!--<type>${cargo.container.type}</type> -->
 					</container>
@@ -418,16 +432,16 @@
 			</plugin>
 
 			<plugin>
-				<!-- Allow this web application to be started with the command : 'mvn jetty:run-war -Psample -Dserver=jetty9x -Ddatabase=derby -Djetty.port=9090' -->
+				<!-- Allow this web application to be started with the command : 'mvn jetty:run-war -Psample -Dserver=jetty9x -Ddatabase=hsqldb -Djetty.port=9090' -->
 				<groupId>org.eclipse.jetty</groupId>
 				<artifactId>jetty-maven-plugin</artifactId>
 				<version>${maven.jetty.eclipse.plugin.version}</version>
 				<configuration>
 					<scanIntervalSeconds>10</scanIntervalSeconds>
-                    <webApp>
-                        <contextPath>/bodgeit</contextPath>
-                    </webApp>
-                    <useTestClasspath>true</useTestClasspath>
+					<webApp>
+						<contextPath>/bodgeit</contextPath>
+					</webApp>
+					<useTestClasspath>true</useTestClasspath>
 					<useTestClasspath>true</useTestClasspath>
 					<httpConnector>
 						<!--host>localhost</host -->
@@ -471,6 +485,16 @@
 				<groupId>org.apache.tomcat.maven</groupId>
 				<artifactId>tomcat7-maven-plugin</artifactId>
 				<version>${maven.tomcat7.plugin.version}</version>
+				<dependencies>
+					<dependency>
+						<groupId>com.nabla.project.servers.sample</groupId>
+						<artifactId>thebodgeitstore</artifactId>
+						<version>${project.version}</version>
+						<type>war</type>
+					</dependency>
+					<!-- <dependency> <groupId>${jdbc.groupId}</groupId> <artifactId>${jdbc.client.artifactId}</artifactId>
+						<version>${jdbc.version}</version> <scope>runtime</scope> </dependency> -->
+				</dependencies>
 				<configuration>
 					<!-- http port -->
 					<port>${tomcat.port}</port>
@@ -487,16 +511,6 @@
 					<!--<configurationDir>${basedir}</configurationDir> -->
 					<server>nabla-tomcat</server>
 				</configuration>
-				<dependencies>
-					<dependency>
-						<groupId>com.nabla.project.servers.sample</groupId>
-						<artifactId>thebodgeitstore</artifactId>
-						<version>${project.version}</version>
-						<type>war</type>
-					</dependency>
-					<!-- <dependency> <groupId>${jdbc.groupId}</groupId> <artifactId>${jdbc.client.artifactId}</artifactId>
-						<version>${jdbc.version}</version> <scope>runtime</scope> </dependency> -->
-				</dependencies>
 			</plugin>
 		</plugins>
 	</build>
@@ -551,6 +565,22 @@
 						<groupId>org.owasp.zaproxy</groupId>
 						<artifactId>zap-maven-plugin</artifactId>
 						<version>${maven.zap.plugin.version}</version>
+						<executions>
+							<execution>
+								<id>startZAP</id>
+								<phase>pre-integration-test</phase>
+								<goals>
+									<goal>start-zap</goal>
+								</goals>
+							</execution>
+							<execution>
+								<id>processZAP</id>
+								<phase>integration-test</phase>
+								<goals>
+									<goal>process-zap</goal>
+								</goals>
+							</execution>
+						</executions>
 						<configuration>
 							<!-- Windows -->
 							<!--<zapProgram>C:\Work\Tools\ZAProxy\zap.bat</zapProgram> -->
@@ -569,22 +599,6 @@
 							<format>html</format>
 							<!--<format>xml</format>-->
 						</configuration>
-						<executions>
-							<execution>
-								<id>startZAP</id>
-								<phase>pre-integration-test</phase>
-								<goals>
-									<goal>start-zap</goal>
-								</goals>
-							</execution>
-							<execution>
-								<id>processZAP</id>
-								<phase>integration-test</phase>
-								<goals>
-									<goal>process-zap</goal>
-								</goals>
-							</execution>
-						</executions>
 					</plugin>
 				</plugins>
 			</build>
@@ -597,43 +611,11 @@
 					<name>!server</name>
 				</property>
 			</activation>
-			<properties>
-				<server.home></server.home>
-				<jetty.version>${jetty9.version}</jetty.version>
-				<server.version>${jetty.version}</server.version>
-				<server.name>${product.name}</server.name>
-				<server.port></server.port>
-				<datasource>${datasource.name}</datasource>
-
-				<cargo.container>jetty9x</cargo.container>
-				<cargo.container.home>${project.build.directory}/jetty</cargo.container.home>
-				<cargo.container.url>TODOjetty9</cargo.container.url>
-				<cargo.container.type>installed</cargo.container.type>
-				<cargo.configuration.type>standalone</cargo.configuration.type>
-				<cargo.deployables.type></cargo.deployables.type>
-				<cargo.port>${jetty.port}</cargo.port>
-
-				<cargo.jmx.activation>${cargo.jetty.jmx.activation}</cargo.jmx.activation>
-
-				<scope.type>${scope.compile}</scope.type>
-				<scope.tomcat.only.type>${scope.compile}</scope.tomcat.only.type>
-				<scope.tomcat.never.type>${scope.provided}</scope.tomcat.never.type>
-			</properties>
 			<build>
 				<plugins>
 					<plugin>
 						<groupId>org.codehaus.cargo</groupId>
 						<artifactId>cargo-maven2-plugin</artifactId>
-						<configuration>
-							<container>
-								<containerId>${cargo.container}</containerId>
-								<artifactInstaller>
-									<groupId>org.eclipse.jetty</groupId>
-									<artifactId>jetty-distribution</artifactId>
-									<version>${server.version}</version>
-								</artifactInstaller>
-							</container>
-						</configuration>
 						<executions>
 							<execution>
 								<id>start-container</id>
@@ -657,9 +639,41 @@
 								</goals>
 							</execution>
 						</executions>
+						<configuration>
+							<container>
+								<containerId>${cargo.container}</containerId>
+								<artifactInstaller>
+									<groupId>org.eclipse.jetty</groupId>
+									<artifactId>jetty-distribution</artifactId>
+									<version>${server.version}</version>
+								</artifactInstaller>
+							</container>
+						</configuration>
 					</plugin>
 				</plugins>
 			</build>
+			<properties>
+				<cargo.configuration.type>standalone</cargo.configuration.type>
+
+				<cargo.container>jetty9x</cargo.container>
+				<cargo.container.home>${project.build.directory}/jetty</cargo.container.home>
+				<cargo.container.type>installed</cargo.container.type>
+				<cargo.container.url>TODOjetty9</cargo.container.url>
+				<cargo.deployables.type></cargo.deployables.type>
+
+				<cargo.jmx.activation>${cargo.jetty.jmx.activation}</cargo.jmx.activation>
+				<cargo.port>${jetty.port}</cargo.port>
+				<datasource>${datasource.name}</datasource>
+				<jetty.version>${jetty9.version}</jetty.version>
+				<scope.tomcat.never.type>${scope.provided}</scope.tomcat.never.type>
+				<scope.tomcat.only.type>${scope.compile}</scope.tomcat.only.type>
+
+				<scope.type>${scope.compile}</scope.type>
+				<server.home></server.home>
+				<server.name>${product.name}</server.name>
+				<server.port></server.port>
+				<server.version>${jetty.version}</server.version>
+			</properties>
 		</profile>
 		<profile>
 			<id>tomcat8x</id>
@@ -670,36 +684,6 @@
 					<value>tomcat8x</value>
 				</property>
 			</activation>
-			<properties>
-				<tomcat.home>${env.CATALINA_BASE}</tomcat.home>
-				<!--<tomcat.home>/tomcat-7.0</tomcat.home> -->
-				<server.home>${tomcat.home}</server.home>
-				<server.version>8.0.3</server.version>
-				<server.name>${product.name}</server.name>
-				<server.port>${tomcat.port}</server.port>
-				<!--<datasource>${datasource.name}</datasource> -->
-				<datasource>openejb:Resource/jdbc/${datasource.name}</datasource>
-				<deploy.url>http://${cargo.host}:${tomcat.port}/manager/text</deploy.url>
-
-				<cargo.container>tomcat8x</cargo.container>
-				<cargo.container.home>${tomcat.home}</cargo.container.home>
-				<cargo.container.url>http://archive.apache.org/dist/tomcat/tomcat-8/v${server.version}/bin/apache-tomcat-${server.version}.zip</cargo.container.url>
-				<cargo.container.type>installed</cargo.container.type>
-				<!--<cargo.container.type>remote</cargo.container.type> -->
-				<!--<cargo.configuration.type>existing</cargo.configuration.type> -->
-				<cargo.configuration.type>standalone</cargo.configuration.type>
-				<!--<cargo.configuration.type>runtime</cargo.configuration.type> -->
-				<!--<cargo.configuration.home>${tomcat.home}</cargo.configuration.home> -->
-				<cargo.configuration.home>${project.build.directory}/catalina-base</cargo.configuration.home>
-				<cargo.deployables.type></cargo.deployables.type>
-				<cargo.port>${tomcat.port}</cargo.port>
-
-				<scope.type>${scope.compile}</scope.type>
-				<scope.tomcat.only.type>${scope.compile}</scope.tomcat.only.type>
-				<scope.tomcat.never.type>${scope.provided}</scope.tomcat.never.type>
-
-				<cargo.jmx.activation>${cargo.tomcat.jmx.activation}</cargo.jmx.activation>
-			</properties>
 			<!-- todo tomcatee <dependencies> <dependency> <groupId>org.apache.openejb</groupId>
 				<artifactId>apache-tomee</artifactId> <version>1.6.0</version> </dependency>
 				</dependencies> -->
@@ -708,6 +692,26 @@
 					<plugin>
 						<groupId>org.codehaus.cargo</groupId>
 						<artifactId>cargo-maven2-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>start</id>
+								<phase>pre-integration-test</phase>
+								<goals>
+									<goal>start</goal>
+									<goal>deployer-deploy</goal>
+								</goals>
+							</execution>
+							<execution>
+								<id>stop</id>
+								<phase>post-integration-test</phase>
+								<goals>
+									<goal>deployer-undeploy</goal>
+									<goal>stop</goal>
+								</goals>
+							</execution>
+							<!-- <execution> <id>package</id> <phase>post-integration-test</phase>
+								<goals> <goal>package</goal> </goals> </execution> -->
+						</executions>
 						<configuration>
 							<skip>${maven.test.skip}</skip>
 							<wait>${cargo.wait}</wait>
@@ -742,29 +746,39 @@
 								<outputLocation>${project.build.directory}/tomcat-packaged</outputLocation>
 							</packager>
 						</configuration>
-						<executions>
-							<execution>
-								<id>start</id>
-								<phase>pre-integration-test</phase>
-								<goals>
-									<goal>start</goal>
-									<goal>deployer-deploy</goal>
-								</goals>
-							</execution>
-							<execution>
-								<id>stop</id>
-								<phase>post-integration-test</phase>
-								<goals>
-									<goal>deployer-undeploy</goal>
-									<goal>stop</goal>
-								</goals>
-							</execution>
-							<!-- <execution> <id>package</id> <phase>post-integration-test</phase>
-								<goals> <goal>package</goal> </goals> </execution> -->
-						</executions>
 					</plugin>
 				</plugins>
 			</build>
+			<properties>
+				<!--<cargo.configuration.type>runtime</cargo.configuration.type> -->
+				<!--<cargo.configuration.home>${tomcat.home}</cargo.configuration.home> -->
+				<cargo.configuration.home>${project.build.directory}/catalina-base</cargo.configuration.home>
+				<!--<cargo.container.type>remote</cargo.container.type> -->
+				<!--<cargo.configuration.type>existing</cargo.configuration.type> -->
+				<cargo.configuration.type>standalone</cargo.configuration.type>
+
+				<cargo.container>tomcat8x</cargo.container>
+				<cargo.container.home>${tomcat.home}</cargo.container.home>
+				<cargo.container.type>installed</cargo.container.type>
+				<cargo.container.url>http://archive.apache.org/dist/tomcat/tomcat-8/v${server.version}/bin/apache-tomcat-${server.version}.zip</cargo.container.url>
+				<cargo.deployables.type></cargo.deployables.type>
+
+				<cargo.jmx.activation>${cargo.tomcat.jmx.activation}</cargo.jmx.activation>
+				<cargo.port>${tomcat.port}</cargo.port>
+				<!--<datasource>${datasource.name}</datasource> -->
+				<datasource>openejb:Resource/jdbc/${datasource.name}</datasource>
+				<deploy.url>http://${cargo.host}:${tomcat.port}/manager/text</deploy.url>
+				<scope.tomcat.never.type>${scope.provided}</scope.tomcat.never.type>
+				<scope.tomcat.only.type>${scope.compile}</scope.tomcat.only.type>
+
+				<scope.type>${scope.compile}</scope.type>
+				<!--<tomcat.home>/tomcat-7.0</tomcat.home> -->
+				<server.home>${tomcat.home}</server.home>
+				<server.name>${product.name}</server.name>
+				<server.port>${tomcat.port}</server.port>
+				<server.version>8.0.3</server.version>
+				<tomcat.home>${env.CATALINA_BASE}</tomcat.home>
+			</properties>
 		</profile>
 	</profiles>
 </project>

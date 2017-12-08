@@ -67,7 +67,7 @@ public class FunctionalSTest
     private static String                 CHROME_DRIVER        = DEFAULT_CHROMEDRIVER;
     private static String                 FIREFOX_BIN          = DEFAULT_FIREFOXBIN;
 
-    //private static DefaultSelenium        SELENIUM;
+    // private static DefaultSelenium SELENIUM;
     private static DesiredCapabilities    CAPABILITIES;
 
     private static long                   DEPLOY_WAIT          = 20;
@@ -146,7 +146,7 @@ public class FunctionalSTest
         // driver.manage().window().setSize(new Dimension(1920, 1080));
         setDriver(DRIVER);
 
-        //SELENIUM = new WebDriverBackedSelenium(DRIVER, BASE_URL);
+        // SELENIUM = new WebDriverBackedSelenium(DRIVER, BASE_URL);
 
         FunctionalSTest.LOGGER.info("Wainting for deploy to be finished before starting test (in seconds) : {}", DEPLOY_WAIT);
         TimeUnit.SECONDS.sleep(DEPLOY_WAIT);
