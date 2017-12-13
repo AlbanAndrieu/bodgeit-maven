@@ -9,7 +9,7 @@ Goal is to test integration with https://github.com/javabeanz/zap-maven-plugin
 #### build
 
 ```
-$ mvn clean install
+$ mvn clean install -Dserver=jetty9x -Ddatabase=hsqldb
 ```
 
 #### build + integration test
@@ -17,7 +17,7 @@ $ mvn clean install
 Jetty9x is the default server
 
 ```
-$ mvn clean install -Prun-its
+$ mvn clean install -Prun-its -Dserver=jetty9x -Ddatabase=hsqldb
 $ mvn clean install -Prun-its -Dserver=tomcat8x
 ```
 
