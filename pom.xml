@@ -98,7 +98,7 @@
 		<maven.failsafe.plugin.version>${maven.surefire.plugin.version}</maven.failsafe.plugin.version>
 		<maven.jetty.eclipse.plugin.version>${jetty.version}</maven.jetty.eclipse.plugin.version>
 		<maven.site.plugin.version>3.6</maven.site.plugin.version>
-		<maven.sonar.plugin.version>3.3.0.603</maven.sonar.plugin.version>
+		<maven.sonar.plugin.version>3.7.0.1746</maven.sonar.plugin.version>
 		<maven.surefire.plugin.version>2.18.1</maven.surefire.plugin.version>
 		<maven.test.failure.skip>true</maven.test.failure.skip>
 		<maven.test.it.skip>${maven.test.skip}</maven.test.it.skip>
@@ -124,7 +124,6 @@
 		<!--<sonar.groovy.cobertura.reportPath>target/site/cobertura/coverage.xml</sonar.groovy.cobertura.reportPath>-->
 		<sonar.cobertura.reportPath>target/site/cobertura/coverage.xml</sonar.cobertura.reportPath>
 		<sonar.dependencyCheck.reportPath>${basedir}/target/dependency-check-report.xml</sonar.dependencyCheck.reportPath>
-		<sonar.github.oauth>06895b871e3f2775b7497e809222be22770d0c05</sonar.github.oauth>
 		<sonar.github.oauth>06895b871e3f2775b7497e809222be22770d0c05</sonar.github.oauth>
 		<sonar.global.exclusions>**/generated/**</sonar.global.exclusions>
 		<sonar.groovy.codenarc.reportPath>target/CodeNarcReport.xml</sonar.groovy.codenarc.reportPath>
@@ -152,7 +151,7 @@
 		<sonar.javascript.lcov.reportPath>${basedir}/target/lcov-karma.info</sonar.javascript.lcov.reportPath>
 		<sonar.links.ci>${env.BUILD_URL}</sonar.links.ci>
 		<sonar.links.scm>https://github.com/AlbanAndrieu</sonar.links.scm>
-		<sonar.login>50cb615252d00e68f3678b321335a8d1f13a9145</sonar.login>
+		<sonar.login>818224bf27cc74d98389c3d5c567e58ea7e058eb</sonar.login>
 		<sonar.organization>albanandrieu-github</sonar.organization>
 		<sonar.pitest.mode>reuseReport</sonar.pitest.mode>
 		<sonar.pitest.reportsDirectory>target/pit-reports</sonar.pitest.reportsDirectory>
