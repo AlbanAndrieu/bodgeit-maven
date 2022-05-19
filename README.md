@@ -1,7 +1,10 @@
-bodgeit-maven
-================
 
-[![Jenkins Build Status](http://home.nabla.mobi:8381/job/bodgeit-maven-nightly/badge/icon)](http://home.nabla.mobi:8381/job/bodgeit-maven-nightly)
+## [![Nabla](http://albandrieu.com/nabla/index/assets/nabla/nabla-4.png)](https://github.com/AlbanAndrieu) bodgeit-maven
+
+[![License: APACHE](http://img.shields.io/:license-apache-blue.svg?style=flat-square)](http://www.apache.org/licenses/LICENSE-2.0.html)
+[![License: MIT](https://img.shields.io/badge/license-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+<!--[![Jenkins Build Status](http://albandrieu.com/jenkins/job/bodgeit-maven-nightly-nightly/badge/icon)](http://albandrieu.com/jenkins/job/bodgeit-maven-nightly-nightly)-->
 
 This is mavenised version of the bodgeitstore. (see https://github.com/psiinon/bodgeit for original code with Ant).
 Goal is to test integration with https://github.com/javabeanz/zap-maven-plugin
